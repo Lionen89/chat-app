@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.160978a3.css",
-    "main.js": "/static/js/main.be4555d6.js",
-    "static/media/default-user-photo.png": "/static/media/default-user-photo.0ebc89a2e7eb34717958.png",
-    "static/media/send-message-btn.png": "/static/media/send-message-btn.c61654823080eecc2400.png",
-    "static/media/1828817.png": "/static/media/1828817.b3120687d3118e5ed136.png",
-    "static/media/icons-error.png": "/static/media/icons-error.250395391b5aae6201fd.png",
-    "index.html": "/index.html",
-    "static/media/Close_Icon.svg": "/static/media/Close_Icon.2ceb783afbab75916ddc.svg",
-    "main.160978a3.css.map": "/static/css/main.160978a3.css.map",
-    "main.be4555d6.js.map": "/static/js/main.be4555d6.js.map"
+    "main.css": "/chat-app/static/css/main.a92e3a5c.css",
+    "main.js": "/chat-app/static/js/main.039d2a14.js",
+    "static/media/default-user-photo.png": "/chat-app/static/media/default-user-photo.0ebc89a2e7eb34717958.png",
+    "static/media/send-message-btn.png": "/chat-app/static/media/send-message-btn.c61654823080eecc2400.png",
+    "static/media/1828817.png": "/chat-app/static/media/1828817.b3120687d3118e5ed136.png",
+    "static/media/icons-error.png": "/chat-app/static/media/icons-error.250395391b5aae6201fd.png",
+    "index.html": "/chat-app/index.html",
+    "static/media/Close_Icon.svg": "/chat-app/static/media/Close_Icon.2ceb783afbab75916ddc.svg",
+    "main.a92e3a5c.css.map": "/chat-app/static/css/main.a92e3a5c.css.map",
+    "main.039d2a14.js.map": "/chat-app/static/js/main.039d2a14.js.map"
   },
   "entrypoints": [
-    "static/css/main.160978a3.css",
-    "static/js/main.be4555d6.js"
+    "static/css/main.a92e3a5c.css",
+    "static/js/main.039d2a14.js"
   ]
 }
