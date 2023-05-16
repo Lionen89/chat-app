@@ -1,0 +1,112 @@
+@import './utils/mixins.scss';
+
+.auth {
+  margin: 0 auto;
+  padding: 30px;
+  align-items: center;
+  justify-content: center;
+  max-width: 420px;
+  box-shadow: 0px 2px 2px #2a5cd4;
+
+  &__title {
+    @include text-format(500, 24px, 29px);
+    margin: 40px auto 0;
+    text-align: center;
+    max-width: 396px;
+  }
+  &__subtitle {
+    @include text-format(400, 18px, 20px);
+    margin: 10px auto 40px;
+    text-align: center;
+  }
+
+  &__form {
+    @include flex-center-center;
+    flex-direction: column;
+    margin: 0 auto;
+    &-field {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    &-name {
+      @include text-format(normal, 14px, 16px);
+      color: #a0a0a0;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__text {
+    @include text-format(normal, 14px, 17px);
+    @include size(17px, 396px);
+    border: none;
+    border-bottom: 1px solid rgba(232, 232, 232, 1);
+    padding: 0 0 10px 0;
+    margin: 5px auto 24px;
+    &:focus {
+      @include focus;
+    }
+    &_type_error {
+      border-bottom: 1px solid rgba(255, 104, 56, 1);
+      margin: 5px auto 0;
+    }
+    &-error {
+      @include text-format(400, 10px, 12px);
+      color: #ee3465;
+      margin: 6px 0;
+      opacity: 0;
+      &_active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__save-button {
+    @include size(45px, 100%);
+    @include text-format(500, 14px, 17px);
+    background-color: #2a5cd4;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+    margin: 197px auto 0;
+    padding: 0;
+    cursor: pointer;
+    &:hover {
+      opacity: 85%;
+    }
+    &_disable {
+      background-color: #f8f8f8;
+      color: #c2c2c2;
+    }
+  }
+}
+@media screen and (max-width: 960px) {
+  .auth__tooltips {
+    margin-bottom: 232px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .auth {
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+
+    &__save-button {
+      font-size: 12px;
+      line-height: 15px;
+      margin: 285px auto 0;
+    }
+
+    &__title {
+      text-align: center;
+      margin: 50px auto 80px;
+      max-width: 260px;
+    }
+
+    &__text {
+      width: 260px;
+    }
+  }
+}

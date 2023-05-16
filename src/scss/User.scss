@@ -1,0 +1,32 @@
+@import './utils/mixins.scss';
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  @include reset;
+  margin-bottom: 14px;
+  cursor: pointer;
+  &:last-of-type {
+    margin: 0;
+  }
+
+  &__image {
+    @include size(40px, 40px);
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__name {
+    @include text-format(900, 15px, 18px);
+    @include text;
+    @include reset;
+    margin-left: 15px;
+    color: #2a5cd4;
+    max-width: 150px;
+    white-space: nowrap;
+  }
+}

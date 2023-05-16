@@ -1,0 +1,36 @@
+@import './utils/mixins.scss';
+
+.chat-page {
+  @include size(100%, 100%);
+  &__container {
+    display: grid;
+    grid-template-columns: 24% auto;
+    @include size(100vh, 100%);
+  }
+  &__wrapper {
+    @include size(100vh, 100%);
+    @include flex-center-center;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__title {
+    @include text-format(900, 20px, 20px);
+    @include reset;
+    color: #2a5cd4;
+  }
+  &__button {
+    @include size(50px, 50px);
+    border-radius: 50%;
+    background-image: url('../images/1828817.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .chat-page__container {
+    grid-template-columns: 100%;
+  }
+}
