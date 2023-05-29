@@ -2,7 +2,7 @@ import React from 'react';
 
 import { validationIdMessage, regexId } from '../utils/Constants';
 
-function AuthPage({ hadleLogin }) {
+function AuthPage({ handleLogin }) {
   const [id, setId] = React.useState('');
   const [token, setToken] = React.useState('');
   const [isValidId, setIsValidId] = React.useState(true);
@@ -32,7 +32,7 @@ function AuthPage({ hadleLogin }) {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    hadleLogin(id, token);
+    handleLogin(id, token);
   }
   React.useEffect(() => {
     if (isValidId && id && token && isValidToken) {

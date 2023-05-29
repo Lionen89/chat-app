@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useEscClose, useClickClose } from '../utils/UseClose';
+import { useEscClose, useClickClose } from '../hooks/UseClose';
 
 function Popup({ isOpen, onClose, textError }) {
   useEscClose(isOpen, onClose);

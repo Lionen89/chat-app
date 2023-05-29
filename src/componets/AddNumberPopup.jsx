@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { useEscClose, useClickClose } from '../utils/UseClose';
+import { useEscClose, useClickClose } from '../hooks/UseClose';
 import { validationPhoneMessage, regexPhone } from '../utils/Constants';
 
-function AddNumberPopup({ isOpen, onClose, handleUserSubmit }) {
+function AddNumberPopup({ isOpen, onClose, onSubmit }) {
   const [phone, SetPhone] = React.useState('');
   const [isValidPhone, setIsValidPhone] = React.useState(true);
   const [error, setError] = React.useState('');
 
   function handleChange(e) {
-    SetPhone(e.target.value);
     setIsValidPhone(true);
     setError('');
+    SetPhone(e.target.value);
     if (!e.target.validity.valid) {
       setIsValidPhone(false);
       setError(e.target.validationMessage);
@@ -23,7 +23,7 @@ function AddNumberPopup({ isOpen, onClose, handleUserSubmit }) {
 
   const handleSubmit = (e, phone) => {
     e.preventDefault();
-    handleUserSubmit(phone);
+    onSubmit(phone);
     handleClose();
   };
   const handleClose = () => {

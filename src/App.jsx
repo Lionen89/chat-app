@@ -3,10 +3,10 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import AuthPage from './pages/AuthPage';
 import ChatPage from './pages/ChatPage';
-import AddNumberPopup from './componenets/AddNumberPopup';
-import ErrorPopup from './componenets/ErrorPopup';
+import AddNumberPopup from './componets/AddNumberPopup';
+import ErrorPopup from './componets/ErrorPopup';
 import { textError } from './utils/Constants';
-import { sendMessageApi, getMessageApi, deleteMessageApi } from './componenets/Api';
+import { sendMessageApi, getMessageApi, deleteMessageApi } from './api/Api';
 
 function App() {
   const [isAuthorized, setIsAuthorized] = React.useState(false);
@@ -23,9 +23,11 @@ function App() {
   const navigate = useNavigate();
 
   const deleteMessage = (id) => {
-    deleteMessageApi(id)
-      // .then((result) => console.log(result))
-      .catch((error) => console.log('error', error));
+    deleteMessageApi(id).catch((error) => console.log('error', error));
+  };
+
+  const phoneHandler = (phone) => {
+    return phone.replace(/[^\d]/g, '');
   };
 
   const getMessage = () => {
@@ -37,7 +39,7 @@ function App() {
             result.body.messageData?.extendedTextMessageData?.text;
           let userId = result.body.senderData?.sender?.split('@')[0];
           users.forEach((element) => {
-            if (userId === element.phone.replace(/[^\d]/g, '')) {
+            if (userId === phoneHandler(element.phone)) {
               saveNewUser(message, true, userId);
             }
           });
@@ -54,7 +56,7 @@ function App() {
     } else navigate('/');
   }, [navigate]);
 
-  const hadleLogin = (id, token) => {
+  const handleLogin = (id, token) => {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     setIsAuthorized(true);
@@ -97,7 +99,7 @@ function App() {
   };
 
   const handleCurrentUser = (id, phone) => {
-    const newPhone = phone.replace(/[^\d]/g, '');
+    const newPhone = phoneHandler(phone);
     setCurrentUser({
       id: id,
       phone: newPhone,
@@ -107,8 +109,8 @@ function App() {
 
   const handleUserSubmit = (phone) => {
     const id = users ? users.length + 1 : 1;
-    const newPhone = phone.replace(/[^\d]/g, '');
-    if (users.find((phone) => phone.phone.replace(/[^\d]/g, '') === newPhone)) {
+    const newPhone = phoneHandler(phone);
+    if (users.find((phone) => phoneHandler(phone.phone) === newPhone)) {
       setIsErrorPopupOpen(true);
       return;
     } else {
@@ -130,7 +132,7 @@ function App() {
     const interval =
       isAuthorized && localStorage.getItem('currentUser') ? setInterval(getMessage, 6000) : '';
     return () => clearInterval(interval);
-  }, [tokenCheck, isAuthorized, currentUser]);
+  }, [tokenCheck, isAuthorized]);
 
   return (
     <div className="App">
@@ -146,12 +148,12 @@ function App() {
             />
           }
         />
-        <Route path="/" element={<AuthPage hadleLogin={hadleLogin} />} />
+        <Route path="/" element={<AuthPage handleLogin={handleLogin} />} />
       </Routes>
       <AddNumberPopup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
-        handleUserSubmit={handleUserSubmit}
+        onSubmit={handleUserSubmit}
       />
       <ErrorPopup
         isOpen={isErrorPopupOpen}

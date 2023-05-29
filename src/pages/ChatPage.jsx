@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Chat from '../componenets/Chat';
-import Users from '../componenets/Users';
+import Chat from '../componets/Chat';
+import Users from '../componets/Users';
 
 export default function ChatPage({
   users,
@@ -11,7 +11,7 @@ export default function ChatPage({
 }) {
   return (
     <main className="chat-page">
-      {JSON.parse(localStorage.getItem('chats'))?.length !== 0 && localStorage.getItem('chats') ? (
+      {JSON.parse(localStorage.getItem('chats') && localStorage.getItem('chats')).length !== 0 ? (
         <div className="chat-page__container">
           <Users
             users={users}
